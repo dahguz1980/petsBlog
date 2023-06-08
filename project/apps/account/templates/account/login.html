@@ -1,0 +1,47 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block CONTENT %}
+
+<div class="container-fluid h-custom" style="padding-bottom: 30px;">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="col-md-9 col-lg-6 ">
+        <img src="{% static 'account/img/login_image.jpeg'%}"
+        class="img-fluid" alt="Sample image">
+    </div>
+    <div class="col-md-8 col-lg-7">
+        <form method="POST" novalidate>
+            {% csrf_token %} 
+            {% if form.non_field_errors %}
+                <div class="alert alert-danger">
+                    {% for error in form.non_field_errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+
+        <div class="form-outline mb-4">
+            <label for="{{ form.username.id_for_label }}" class="form-label">{{ form.username.label }}</label>
+            {{ form.username }}
+        </div>
+        <div class="form-outline mb-4">
+            <label for="{{ form.password.id_for_label }}" class="form-label">{{ form.password.label }}</label>
+            {{ form.password }}
+        </div>
+
+            <div class="text-center  mt-4 pt-2">
+                <button type="submit" class="btn btn-primary btn-lg"
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="#!"
+                    class="link-danger">Register</a></p>
+            </div>
+        </form>
+    </div>
+    </div>
+</div>
+  
+    
+{% endblock CONTENT %}
+
+ 
+    
