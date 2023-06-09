@@ -4,5 +4,5 @@ from . import views
 
 urlpatterns = [
     path("login/", views.LoginRequest.as_view(), name="login"),
-    path("logout/", LogoutView.as_view(template_name="home/index.html"), name="logout"),
+    path("logout/", LogoutView.as_view(next_page="home:index"), name="logout"),
 ]

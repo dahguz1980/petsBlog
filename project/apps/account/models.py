@@ -7,9 +7,9 @@ from django.contrib.auth.models import User
 class Profile(models.Model):
     """User Profle"""
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="profile")
     description = models.CharField(max_length=250, null=False, blank=False)
-    photo = models.ImageField(null=True, blank=True)
+    photo = models.ImageField(upload_to="avatars", null=True, blank=True)
     facebookLink = models.CharField(max_length=250, null=True, blank=True)
     twitterLink = models.CharField(max_length=250, null=True, blank=True)
     instagramLink = models.CharField(max_length=250, null=True, blank=True)
