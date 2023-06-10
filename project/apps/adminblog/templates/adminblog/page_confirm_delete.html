@@ -1,0 +1,23 @@
+{% extends 'home/base.html' %}
+
+{% block CONTENT %}
+
+
+    <div class="container mt-5">
+
+        {% block title %}
+         <h3 class="text-center">Eliminar Página del Blog</h3>
+        {% endblock title %}
+
+        <p class="fs-5 fst-italic">¿Confirmas eliminar "{{ object }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <div class="mt-4">
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+                <a  class="btn btn-secondary" href="{% url 'adminblog:pages' %}">Cancelar</a>
+            </div>
+        </form>
+
+    </div>
+
+{% endblock CONTENT %}

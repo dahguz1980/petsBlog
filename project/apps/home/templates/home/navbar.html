@@ -2,14 +2,14 @@
 <!-- Responsive navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a class="navbar-brand" href="#!">Blog Cats & Dogs</a>
+        <a class="navbar-brand" href="{% url 'home:index' %}">Blog Cats & Dogs</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link" >Blog</a></li>
                 <li class="nav-item"><a class="nav-link" href="#!">About Me</a></li>
                 {% if user.is_authenticated %}
-                    <li class="nav-item"><a class="nav-link {%  if '/blog' in request.path %}active{% endif %}" aria-current="page" href="{% url 'blog:pages' %}">Administrar</a></li>
+                    <li class="nav-item"><a class="nav-link {%  if '/adminblog' in request.path %}active{% endif %}" aria-current="page" href="{% url 'adminblog:pages' %}">Administrar</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'account:logout' %}">Salir</a></li>
                     {% if user.profile.photo.url  %}
                         <li class="nav-item"><img src="{{ user.profile.photo.url }}" alt="avatar" class="img-fluid rounded-circle" style="height: 30px;" ></li>

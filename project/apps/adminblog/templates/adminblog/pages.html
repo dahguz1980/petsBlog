@@ -1,0 +1,74 @@
+{% extends 'adminblog/list.html' %}
+
+
+{% block title %}
+
+    <h3 class="text-center">Administrar Páginas del Blog</h3>
+
+    {% if messages %}
+        <div class="mt-2 mb-2 alert alert-success">
+            {% for message in messages %}
+                <span>{{ message }}</span>
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+{% endblock title %}
+
+{% block search %}
+
+
+    <div class="py-lg-4 d-flex justify-content-end">
+        <span> <a class="link-info" href="{% url 'adminblog:page_create' %}">+ Agregar Nueva Página</a></span>
+    </div>
+
+    <div class="py-lg-4">
+        <form action="{% url 'adminblog:pages' %}" method="get">
+            <input class="form-control" name="consulta" type="text" placeholder="Buscar por Título ...">
+        </form>
+    </div>
+
+    
+
+{% endblock search %}
+ 
+{% block table_header %}
+    <tr>
+        <th style="width: 60%;">Título Página</th>
+        <th style="width: 40%;" colspan="4"></th>
+    </tr>
+{% endblock table_header %}
+
+{% block table_body %}
+    {% for page in object_list %}
+        <tr>
+            <td>{{ page.title }}</td>
+            <td>
+                {% if page.status %}
+                    <a href="{% url 'adminblog:page_publish' page.page_id False %}" class="btn btn-dark btn-sm">Despublicar</a>    
+                {% else %}
+                    <a href="{% url 'adminblog:page_publish' page.page_id True %}" class="btn btn-primary btn-sm">Publicar</a>    
+                {% endif %}
+            <td>
+                <a href="{% url 'adminblog:page_preview' page.page_id  %}"
+                   class="btn btn-secondary btn-sm">Previsualizar</a>
+            </td>
+            <td>
+                {% if not page.status %}
+                    <a href="{% url 'adminblog:page_update' page.page_id %}"
+                    class="btn btn-info btn-sm">Actualizar</a>
+                {% else %}
+                <a class="btn btn-light btn-sm disabled">Actualizar</a>
+                {% endif %}
+            </td>
+            <td>
+                {% if not page.status %}
+                    <a href="{% url 'adminblog:page_delete' page.page_id %}"
+                            class="btn btn-danger btn-sm" >Eliminar</a>
+                {% else %}
+                    <a class="btn btn-light btn-sm disabled">Eliminar</a>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+{% endblock table_body %}

@@ -1,0 +1,37 @@
+{% extends 'home/base.html' %}
+
+
+{% block CONTENT %}
+<div class="container mt-5">
+    <div class="mt-4 mb-5">
+        {% if page.status %}
+                    <a href="{% url 'adminblog:page_publish' page.page_id False %}" class="btn btn-dark">Despublicar</a>    
+        {% else %}
+            <a href="{% url 'adminblog:page_publish' page.page_id True %}" class="btn btn-primary">Publicar</a>    
+        {% endif %}
+        <a  class="btn btn-secondary" href="{% url 'adminblog:pages' %}">Volver</a>
+    </div>
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Post content-->
+            <article>
+                <!-- Post header-->
+                <header class="mb-4">
+                    <!-- Post title-->
+                    <h1 class="fw-bolder mb-1">{{object.title}}</h1>
+                    <!-- Post meta content-->
+                    <div class="text-muted fst-italic mb-2" >{{object.createdDate}} por  {{object.user}}</div>
+                </header>
+                <!-- Preview image figure-->
+                {% if object.image %}
+                    <figure class="mb-4"><img class="img-fluid rounded" src="{{object.image.url}}" alt="..." /></figure>    
+                {% endif %}
+                <!-- Post content-->
+                <section class="mb-5">
+                    {{object.description|safe}}
+                </section>
+            </article>
+        </div>
+    </div>
+</div> 
+{% endblock CONTENT %}
