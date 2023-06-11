@@ -25,6 +25,7 @@ urlpatterns = [
     path("", include(("home.urls", "home"))),
     path("account/", include(("account.urls", "account"))),
     path("adminblog/", include(("adminblog.urls", "adminblog"))),
+    path("aboutme/", include(("aboutme.urls", "aboutme"))),
     re_path(r"^media/(?P<path>.*)$", serve, {"document_root": settings.MEDIA_ROOT}),
 ]
 

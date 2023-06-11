@@ -49,16 +49,21 @@ class PageDetail(DetailView):
         return queryset
 
 
-class PageUpdate(UpdateView):
+class PageUpdate(SuccessMessageMixin, UpdateView):
     model = models.Page
     success_url = reverse_lazy("adminblog:pages")
     form_class = forms.PageForm
     template_name = "adminblog/page_create.html"
+    success_message = "Página Actualizada Correctamente"
 
     def get_queryset(self):
         queryset = super().get_queryset()
         queryset = queryset.filter(user=self.request.user)
         return queryset
+
+    def form_valid(self, form: forms.PageForm):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class PageDelete(SuccessMessageMixin, DeleteView):

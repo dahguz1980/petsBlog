@@ -17,13 +17,13 @@
     </head>
     <body >
         {% include 'home/navbar.html' %}
-        <div class="container-fluid h-100 mb-5">
-        {% block CONTENT %}
-            <!-- Page content-->
-            {% block title %}
-            {% endblock title%}
+        <div class="container h-100 mb-5 mt-4">
+            {% block CONTENT %}
+                <!-- Page content-->
+                {% block title %}
+                {% endblock title%}
 
-        {% endblock CONTENT %}
+            {% endblock CONTENT %}
         </div>
         {% include 'home/footer.html' %}
         <!-- Bootstrap core JS-->

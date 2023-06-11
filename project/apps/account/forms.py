@@ -13,14 +13,15 @@ class CustomAuthenticationForm(AuthenticationForm):
         self.fields["username"].widget.attrs.update({"class": "form-control"})
         self.fields["password"].widget.attrs.update({"class": "form-control"})
 
-    def clean(self):
-        cleaned_data = super().clean()
-        username = cleaned_data.get("username")
-        password = cleaned_data.get("password")
 
-        if not username or not password:
-            raise forms.ValidationError("Todos los campos son requeridos.")
-
-        # Realiza otras validaciones personalizadas si es necesario
-
-        return cleaned_data
+class RegisterForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ["username", "first_name", "last_name", "email", "password"]
+        widgets = {
+            "username": forms.TextInput(attrs={"class": "form-control form-control-sm"}),
+            "first_name": forms.TextInput(attrs={"class": "form-control form-control-sm"}),
+            "last_name": forms.TextInput(attrs={"class": "form-control form-control-sm"}),
+            "email": forms.EmailInput(attrs={"class": "form-control form-control-sm"}),
+            "password": forms.PasswordInput(attrs={"class": "form-control form-control-sm"}),
+        }

@@ -2,7 +2,7 @@
 
 
 {% block CONTENT %}
-<div class="container mt-5">
+
     <div class="mt-4 mb-5">
         {% if page.status %}
                     <a href="{% url 'adminblog:page_publish' page.page_id False %}" class="btn btn-dark">Despublicar</a>    
@@ -33,5 +33,4 @@
             </article>
         </div>
     </div>
-</div> 
 {% endblock CONTENT %}

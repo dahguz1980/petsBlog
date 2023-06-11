@@ -1,43 +1,31 @@
-{% extends 'home/base.html' %}
+    {% extends 'home/base.html' %}
 
 {% block CONTENT %}
 
+    {% block title %}
+        <h3 class="text-center">Administrar Página del Blog</h3>
+    {% endblock title %}
 
-    <div class="container mt-5">
+    <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+        {{ form.media }}
 
-        {% block title %}
-         <h3 class="text-center">Crear Página del Blog</h3>
-        {% endblock title %}
-
-        {% if form.non_field_errors %}
-                <div class="alert alert-danger w-75 m-auto mt-2 mb-2">
-                    {% for error in form.non_field_errors %}
-                        <span>{{ error }}</span>
-                    {% endfor %}
-                </div>
-            {% endif %}
-
-        <form method="post" enctype="multipart/form-data" novalidate>
-            {% csrf_token %}
-            {{ form.media }}
-            <div class="form-outline mb-3 w-75 m-auto ">
-                <label for="{{ form.title.id_for_label }}" class="form-label">{{ form.title.label }}:</label>
-                {{ form.title }}
-            </div>
-            <div class="form-outline w-75 mb-4 m-auto">
-                <label for="{{ form.description.id_for_label }}" class="form-label w-100">{{ form.description.label }}:</label>
-                {{ form.description }}
-            </div>
+        {% for field in form %}
             <div class="form-outline mb-4 w-75 m-auto">
-                <label for="{{ form.image.id_for_label }}" class="form-label">{{ form.image.label }}</label>
-                {{ form.image }}
+                <div class="w-100">{{ field.label_tag }}</div>
+                {{ field }}
+                {% if field.errors %}
+                    {% for error in field.errors %}
+                        <div class="text-danger">{{ error }}</div>
+                    {% endfor %}
+                {% endif %}
             </div>
+        {% endfor %}
 
-            <div class="mt-4 w-75 m-auto ">
-                <button type="submit" class="btn btn-success">Guardar</button>
-                <a  class="btn btn-secondary" href="{% url 'adminblog:pages' %}">Cancelar</a>
-            </div>
-        </form>
+        <div class="mt-4 w-75 m-auto ">
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <a  class="btn btn-secondary" href="{% url 'adminblog:pages' %}">Cancelar</a>
+        </div>
+    </form>
 
-    </div>
 {% endblock CONTENT %}

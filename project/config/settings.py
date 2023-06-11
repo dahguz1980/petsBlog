@@ -28,7 +28,7 @@ sys.path.append(str(APLICACIONES))
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -50,6 +50,7 @@ INSTALLED_APPS += [
     "adminblog",
     "home",
     "ckeditor",
+    "aboutme",
 ]
 
 

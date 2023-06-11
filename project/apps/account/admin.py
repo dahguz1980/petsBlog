@@ -12,17 +12,9 @@ admin.site.site_header = "Cats&Dogs Blog"
 class ProfileAdmin(admin.ModelAdmin):
     list_display = (
         "user",
-        "description",
         "photo",
-        "facebookLink",
-        "twitterLink",
-        "linkedinLink",
-        "createdDate",
-        "updateDate",
     )
 
     list_display_links = ("user",)
     search_fields = ("user.username", "user.first_name", "user.last_name")
-    ordering = ("createdDate", "updateDate")
     list_filter = ("user",)
-    date_hierarchy = "createdDate"

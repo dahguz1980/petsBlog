@@ -1,0 +1,54 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+
+{% block CONTENT %}
+
+<div class="row align-items-center flex-row-reverse mt-4">
+    <div class="col-lg-6">
+        <div class="about-text go-to">
+            <h3 class="dark-color">Sobre Mi</h3>
+                <h6 class="theme-color lead">Agile Delivery Lead en Chile</h6>
+                <p>
+                    Como Agilista, siempre he estado fascinada por el mundo de la <mark>tecnología y el desarrollo de aplicaciones</mark>. 
+                    A medida que profundizo en mis conocimientos técnicos, descubro un nuevo mundo de posibilidades y oportunidades emocionantes.
+                </p>
+                <p>
+                    Mi pasión por la agilidady el desarrollo de productos me ha permitido adquirir habilidades clave en la <mark>entrega de valor continuo y la adaptabilidad</mark> a los cambios. 
+                    Me encanta trabajar en equipos colaborativos, fomentando una comunicación efectiva y asegurándome de que todos estén alineados con los objetivos del proyecto.
+                </p>
+                <p>
+                    Además, mi curiosidad por la tecnología me ha llevado a explorar diferentes <mark>lenguajes de programación, marcos de trabajo y herramientas de desarrollo</mark>. 
+                    Me emociona aprender sobre las últimas tendencias y avances en el mundo de la tecnología y aplicar ese conocimiento en mis proyectos.
+                </p>
+            <div class="row about-list">
+                <div class="col-md-6">
+                    <div class="media">
+                        <label class="fw-bold">Cumpleaños</label>
+                        <p>2 de marzo</p>
+                    </div>
+                    <div class="media">
+                        <label class="fw-bold">Residence</label>
+                        <p>Chile</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="media">
+                        <label class="fw-bold">E-mail</label>
+                        <p>dahguz@gmail.com</p>
+                    </div>
+                    <div class="media">
+                        <label class="fw-bold">Linkedin</label>
+                        <p><a href="https://www.linkedin.com/in/dahynaguzman/">Dahyna Guzman</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="about-avatar h-25">
+            <img height="400" class="rounded shadow" src="{% static 'aboutme/img/avatar_yo.png' %}">
+        </div>
+    </div>
+</div>
+{% endblock CONTENT %}

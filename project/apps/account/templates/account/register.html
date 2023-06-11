@@ -1,0 +1,32 @@
+{% extends 'home/base.html' %}
+
+{% block CONTENT %}
+
+
+{% block title %}
+    <h3 class="text-center">Registro de Nuevo Usuario</h3>    
+{% endblock title %}
+
+<form method="POST" novalidate>
+    {% csrf_token %} 
+
+    {% for field in form %}
+        <div class="form-outline mb-3 w-75 m-auto">
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.errors %}
+                {% for error in field.errors %}
+                    <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    {% endfor %}
+
+    <div class="text-center  mt-4 pt-2">
+        <button type="submit" class="btn btn-primary btn-lg"
+            style="padding-left: 2.5rem; padding-right: 2.5rem;">Registrar</button>
+    </div>
+</form>
+
+    
+{% endblock CONTENT %}
