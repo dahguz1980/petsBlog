@@ -1,7 +1,8 @@
 # Create your models here.
 from django.db import models
 from ckeditor.fields import RichTextField
-from django.contrib.auth.models import User
+
+from django.conf import settings
 
 
 class Comments(models.Model):
@@ -24,7 +25,7 @@ class Page(models.Model):
     """Blog Page"""
 
     page_id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=250, null=False, blank=False, verbose_name="Titulo Página")
     description = RichTextField(null=False, blank=False, verbose_name="Descripción")
     status = models.BooleanField(default=False, verbose_name="Estado")

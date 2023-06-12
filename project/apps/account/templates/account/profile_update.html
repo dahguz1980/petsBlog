@@ -1,0 +1,32 @@
+{% extends 'home/base.html' %}
+
+{% block CONTENT %}
+
+
+{% block title %}
+    <h3 class="text-center">Actualizar Pérfil Usuario</h3>    
+{% endblock title %}
+
+<form method="POST" enctype="multipart/form-data"  novalidate>
+    {% csrf_token %} 
+    {{ form.media }}
+    {% for field in form %}
+        <div class="form-outline mb-3 w-75 m-auto">
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.errors %}
+                {% for error in field.errors %}
+                    <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    {% endfor %}
+
+    <div class="text-center  mt-4 pt-2">
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+        <a  class="btn btn-secondary" href="{% url 'home:index' %}">Cancelar</a>
+    </div>
+</form>
+
+    
+{% endblock CONTENT %}

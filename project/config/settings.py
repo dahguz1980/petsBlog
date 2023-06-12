@@ -155,3 +155,4 @@ CKEDITOR_CONFIGS = {
         "toolbarCanCollapse": False,
     }
 }
+AUTH_USER_MODEL = "account.CustomUser"

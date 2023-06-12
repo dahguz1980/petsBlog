@@ -17,6 +17,13 @@
                 {% endfor %}
             </div>
         {% endif %}
+        {% if messages %}
+            <div class="mt-2 mb-2 alert alert-success">
+                {% for message in messages %}
+                    <span>{{ message }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
 
 
         {% for field in form %}

@@ -11,11 +11,17 @@
                 {% if user.is_authenticated %}
                     <li class="nav-item"><a class="nav-link {%  if '/adminblog' in request.path %}active{% endif %}" aria-current="page" href="{% url 'adminblog:pages' %}">Administrar</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'account:logout' %}">Salir</a></li>
-                    {% if user.profile.photo.url  %}
-                        <li class="nav-item"><img src="{{ user.profile.photo.url }}" alt="avatar" class="img-fluid rounded-circle" style="height: 30px;" ></li>
-                    {% else %}
-                        <li class="nav-item"><img src="{% static 'account/img/admin-default.png' %}" data-toggle="tooltip" data-placement="bottom" title="{{ user.username }}" class="img-fluid rounded-circle" style="height: 30px;" ></li>
-                    {% endif %}
+                        <li class="nav-item">
+                            <a href="{% url 'account:profileupdate' user.id %}">
+                            {% if user.avatar  %}
+                                <img src="{{ user.avatar.url }}" alt="avatar" class="img-fluid rounded-circle" style="height: 30px;" >
+                             {% else %}
+                                <img src="{% static 'account/img/admin-default.png' %}" data-toggle="tooltip" data-placement="bottom" title="{{ user.username }}" class="img-fluid rounded-circle" style="height: 30px;" >
+                            {% endif %}
+                            </a>
+                        </li>
+
+                    
                 {% else %}
                     <li class="nav-item"><a class="nav-link {% if request.path == '/account/login/' %}active{% endif %}" href="{% url 'account:login' %}">Login</a></li>
                     <li class="nav-item"><a class="nav-link {% if request.path == '/account/newregister/' %}active{% endif %}" href="{% url 'account:newregister' %}">Registro</a></li>
