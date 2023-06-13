@@ -1,0 +1,32 @@
+{% extends 'home/base.html' %}
+
+{% load static %}
+{% block CONTENT %}
+
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Post content-->
+            <article>
+                <!-- Post header-->
+                <header class="mb-4">
+                    <!-- Post title-->
+                    <h1 class="fw-bolder mb-1">{{object.title}}</h1>
+                    <!-- Post meta content-->
+                    <div class="text-muted fst-italic mb-2" >{{object.createdDate}} por  {{object.user}}</div>
+                </header>
+                <!-- Preview image figure-->
+                <figure class="mb-4">
+                    {% if object.image %}
+                        <img class="img-fluid rounded" src="{{object.image.url}}" alt="..." />
+                    {% else  %}
+                        <img class="card-img-top" src="{% static 'account/img/login_image.jpeg'%}" alt="..." style="height: 300px !important;" />
+                    {% endif %}   
+                </figure> 
+                <!-- Post content-->
+                <section class="mb-5">
+                    {{object.description|safe}}
+                </section>
+            </article>
+        </div>
+    </div>
+{% endblock CONTENT %}
