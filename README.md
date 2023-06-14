@@ -58,12 +58,26 @@ El sistema permite registrar nuevos escritores de blog, loguearse, crear/editar/
 
 7. Ingresa en el Browser de tu preferencia y ingresa a la siguiente dirección: 
 
-> `http:\\localhost:8000`
+> `http://localhost:8000`
 
 8. Opcional: Crear Super usuario para ingresar al admin de Django. No es necesario para interactuar con el sistema.
 
  ***En Mac cambiar python por python3***
 
 > `python manage.py createsuperuser`
+
+## Rutas de la APP
+
+>  `http://localhost:8000` Página inicial 
+>  `http://localhost:8000/account/newregister/` Página de Registro de Usuarios
+>  `http://localhost:8000/account/login/` Inicio de Sesión
+>  `http://localhost:8000/adminblog/pages/list/` Listar Páginas creadas del Blog (Se accede solo con usuarios logueados)
+    En esta misma ruta se encuentran las operaciones CRUD Editar/Publicar/Eliminar 
+
+
+## Modelo Entidad Relacion
+
+
+![Database Model!](project/apps/home/static/home/images/Entidad_Relacion.png "Cats And Dogs Blog Database")
 
 
