@@ -60,4 +60,10 @@ El sistema permite registrar nuevos escritores de blog, loguearse, crear/editar/
 
 > `http:\\localhost:8000`
 
+8. Opcional: Crear Super usuario para ingresar al admin de Django. No es necesario para interactuar con el sistema.
+
+ ***En Mac cambiar python por python3***
+
+> `python manage.py createsuperuser`
+
 
